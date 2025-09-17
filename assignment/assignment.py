@@ -73,10 +73,9 @@ def safe_exponentiate(base: Union[int, float],
     for calculating likelihood in the dice example.
     """
     # YOUR CODE HERE
-    if base == 0:
-        return 1 if exponent == 0 else 0
-    else: 
-        return 1
+    if base == 0 and exponent == 0:
+        return 1 
+    return base ** exponent
     
 
 
@@ -110,5 +109,5 @@ def dice_posterior(sample_draw: List[int],
         p1 *= safe_exponentiate(dice[0].face_probs[i], sample_draw[i])
         p2 *= safe_exponentiate(dice[1].face_probs[i], sample_draw[i])
     
-    return (pP1 * pP2)/(pP1*p1 + pP2*p2)
+    return (pP1 * p1) / (pP1 * p1 + pP2 *p2 )
     
