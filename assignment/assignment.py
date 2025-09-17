@@ -74,7 +74,9 @@ def safe_exponentiate(base: Union[int, float],
     """
     # YOUR CODE HERE
     if base == 0:
-        return 1 if exponent == 0 else 0 
+        return 1 if exponent == 0 else 0
+    else: 
+        return 1
     
 
 
@@ -105,8 +107,8 @@ def dice_posterior(sample_draw: List[int],
     p2 = 1 
     pP2 = die_type_counts[1] / sum(die_type_counts)
     for i in range(len(sample_draw)):
-        p1 *= safe_exponentiate(dice[0].face_probs[i], sample_draw{i})
-        p2 *= safe_exponentiate(dice[1].face_probs[i], sample_draw{i})
+        p1 *= safe_exponentiate(dice[0].face_probs[i], sample_draw[i])
+        p2 *= safe_exponentiate(dice[1].face_probs[i], sample_draw[i])
     
     return (pP1 * pP2)/(pP1*p1 + pP2*p2)
     
