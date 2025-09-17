@@ -75,7 +75,7 @@ def safe_exponentiate(base: Union[int, float],
     # YOUR CODE HERE
     if base == 0:
         return 1 if exponent == 0 else 0 
-    else: 
+    
 
 
 def dice_posterior(sample_draw: List[int], 
