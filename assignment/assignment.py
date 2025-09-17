@@ -64,7 +64,8 @@ def oo_generate_sample(die_type_counts: Tuple[int],
 
     # PUT YOUR CODE HERE. Make sure to use the "roll" method from Die and to 
     # return a numpy nd.array.
-
+    sN = [dice[i].roll(rolls_per_draw) for i in die_types_drawn]
+    return np.array(sN)
 
 def safe_exponentiate(base: Union[int, float],
                       exponent: Union[int, float]) -> Union[int, float]:
@@ -72,6 +73,9 @@ def safe_exponentiate(base: Union[int, float],
     for calculating likelihood in the dice example.
     """
     # YOUR CODE HERE
+    if base == 0:
+        return 1 if exponent == 0 else 0 
+    else: 
 
 
 def dice_posterior(sample_draw: List[int], 
@@ -96,3 +100,13 @@ def dice_posterior(sample_draw: List[int],
                          faces. Its length must be equal to the number of faces \
                          on the dice.')
     # YOUR CODE HERE. You may want to use your safe_exponeniate.
+    p1 = 1 
+    pP1 = die_type_counts[0] / sum(die_type_counts)
+    p2 = 1 
+    pP2 = die_type_counts[1] / sum(die_type_counts)
+    for i in range(len(sample_draw)):
+        p1 *= safe_exponentiate(dice[0].face_probs[i], sample_draw{i})
+        p2 *= safe_exponentiate(dice[1].face_probs[i], sample_draw{i})
+    
+    return (pP1 * pP2)/(pP1*p1 + pP2*p2)
+    
